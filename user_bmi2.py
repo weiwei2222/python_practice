@@ -8,7 +8,7 @@
 # 二进制类型 bytes, bytearray, memoryview
 
 # 计算BMI=体重kg除以身高米的平方米
-
+name = input("what is your name?")
 weight = int()
 height = int()
 while weight <= int():
@@ -28,17 +28,17 @@ while height <= int():
         print("please input a positive number!")
 
 
-def user_bmi_count(weight,height):
+def user_bmi_count(name,weight,height):
     user_bmi = weight / height ** 2
     if user_bmi >= 28:
-        print(f"Your BMI is {user_bmi :.2f} You are too fat! you need to lose your weight!")
+        print(f"{name} BMI is {user_bmi :.2f} You are too fat! you need to lose your weight!")
     elif user_bmi >= 24:
-        print(f"Your BMI is {user_bmi :.2f} Your weight are too high! try eat more health.")
+        print(f"{name} BMI is {user_bmi :.2f} Your weight are too high! try eat more health.")
     elif user_bmi >= 18.5:
-        print(f"Your BMI is {user_bmi :.2f} You are very health.")
+        print(f"{name} BMI is {user_bmi :.2f} You are very health.")
     elif user_bmi < 18.5:
-        print(f"Your BMI is {user_bmi :.2f} You are too skinny.")
+        print(f"{name} BMI is {user_bmi :.2f} You are too skinny.")
     return user_bmi
 
 
-user_result = user_bmi_count(weight, height)
+user_result = user_bmi_count(name,weight, height)
