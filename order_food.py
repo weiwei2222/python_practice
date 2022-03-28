@@ -33,4 +33,4 @@ def total(order):
     return total_price
 
 
-print(total(order))
+print(f"The total price is {total(order):.2f}")
