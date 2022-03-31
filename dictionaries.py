@@ -2,8 +2,12 @@
 
 my_contacts = {"Randy": 123345, "Weiwei": 125645, "Mom": 573345, "Dad": 1235667}
 my_contacts["lily"] = 234555
-my_contacts["kelly"] = 335587
+# 字典中嵌套字典
+my_contacts["kelly"] = {"friend": "hhhh"}
 del my_contacts["Dad"]
+
+# 找到某个字典，必须先找到key
+print(my_contacts["Mom"])
 
 search = input("input contacts name:")
 if search in my_contacts:
