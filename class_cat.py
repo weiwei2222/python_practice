@@ -22,25 +22,25 @@ class Cat:
             print(f"{self.name} feed cat food is {self.food_band[2]}.")
 
 
-cats = [
-    Cat(user_cat_name="Tony", age=4, color="orange"),
-    Cat("Felix", 1, "black and white"),
-    Cat("Garfield", 40, "ugly"),
-]
-
-best_cat = Cat("Bob", 15, "gray")
-
-for cat in cats:
-    cat.display_cat(10, best_cat)
-    cat.feed_cat()
-# cat_a = Cat("Tony", 4, "orange")
-# cat2 = Cat("Felix", 1, "black and white")
+# cats = [
+#     Cat(user_cat_name="Tony", age=4, color="orange"),
+#     Cat("Felix", 1, "black and white"),
+#     Cat("Garfield", 40, "ugly"),
+# ]
 #
-# cat_a.display_cat(10, cat2)
-# cat2.display_cat(9, cat_a)
+# best_cat = Cat("Bob", 15, "gray")
 #
-# cat_a.feed_cat()
-# cat2.feed_cat()
+# for cat in cats:
+#     cat.display_cat(10, best_cat)
+#     cat.feed_cat()
+cat_a = Cat("Tony", 4, "orange")
+cat2 = Cat("Felix", 1, "black and white")
+
+cat_a.display_cat(10, cat2)
+cat2.display_cat(9, cat_a)
+
+cat_a.feed_cat()
+cat2.feed_cat()
 
 
 
