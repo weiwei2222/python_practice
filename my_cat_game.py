@@ -10,7 +10,7 @@ class Cat:
 
     def display_cat(self):
         print(f"Congratulations, you just adopted a lovely cat!\n"
-              f"your cat name is {self.name}. he is {self.category} cat and he is {self.age} years old.")
+              f"your cat 😺 name is {self.name}. he is {self.category} cat and he is {self.age} years old.")
 
     def play_cat(self):
         if self.category == "American Shorthair":
@@ -45,11 +45,11 @@ user_feed = int(input(f"Your cat {user_cat.name} is hungry now."
 cat_game_continue = True
 while cat_game_continue:
     if Cat.food_band[user_feed] == user_cat.feed_cat():
-        print(f"Your cat {user_cat.name} is full now. ")
+        print(f"Your cat 😽 {user_cat.name} is full now. ")
         cat_game_continue = False
     else:
         cat_game_continue = True
-        user_feed = int(input(f"Your cat {user_cat.name} doesn't like {Cat.food_band[user_feed]}.\n"
+        user_feed = int(input(f"Your cat 😾 {user_cat.name} doesn't like {Cat.food_band[user_feed]}.\n"
                               f"Please feed food.\n"
                               f"1,small cat food  2,adult cat food  3,old cat food\n")) - 1
 
@@ -60,10 +60,10 @@ user_play = int(input(f"Your cat {user_cat.name} wants to play now."
 cat_game_continue = True
 while cat_game_continue:
     if Cat.cat_game[user_play] == user_cat.play_cat():
-        print(f"Your cat {user_cat.name} is happy now. ")
+        print(f"Your cat 😽 {user_cat.name} is happy now. ")
         cat_game_continue = False
     else:
         cat_game_continue = True
-        user_play = int(input(f"Your cat {user_cat.name} doesn't like {Cat.cat_game[user_play]}.\n"
+        user_play = int(input(f"Your cat 😾 {user_cat.name} doesn't like {Cat.cat_game[user_play]}.\n"
                               f"Please choice.\n"
                               f"1,running with you  2,play toll with you  3,sleeping in your lap 4,hiding to you\n"))-1
