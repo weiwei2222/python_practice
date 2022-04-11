@@ -6,19 +6,19 @@ level_easy = 10
 level_hard = 5
 
 
-def check_answer_number(user_answer, answer_number, user_turns):
+def check_answer_number(user_answer, answer_number, my_turns):
     if user_answer > answer_number:
         print("Too high!")
-        return user_turns - 1
+        return my_turns - 1
     elif user_answer < answer_number:
         print("Too low!")
-        return user_turns - 1
+        return my_turns - 1
 
 
-def game_level(user_turns):
-    if user_turns == "easy":
+def game_level(user_level):
+    if user_level == "easy":
         return level_easy
-    if user_turns == "hard":
+    if user_level == "hard":
         return level_hard
 
 
@@ -26,7 +26,7 @@ def game():
     print(logo)
     print("Welcome to the Number Guessing Game!\nI am thinking of a number between 1 and 100.")
     answer = random.randint(1, 101)
-    print(answer)
+    # print(answer)
     leve_choice = input("Choose a difficulty. Type 'easy' or 'hard': ")
     turns = game_level(leve_choice)
     game_continue = True
