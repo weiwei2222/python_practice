@@ -31,6 +31,7 @@ def game():
     turns = game_level(leve_choice)
     game_continue = True
     while game_continue:
+        print(f"You have {turns} attempts remaining to guess the number.")
         user_guess = int(input("Please make a guess:"))
         turns = check_answer_number(user_guess, answer, turns)
         if user_guess == answer:
@@ -39,8 +40,7 @@ def game():
         elif turns == 0:
             print("You've run out of guesses, you lose.")
             game_continue = False
-        elif user_guess != answer:
-            print(f"You have {turns} attempts remaining to guess the number.")
+
 
 
 game()
