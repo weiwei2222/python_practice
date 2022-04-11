@@ -38,7 +38,6 @@ user_cat_age = int(input("Please type your cat age.\n"))
 user_cat = Cat(user_cat_name, Cat.cat_category[user_cat_category], user_cat_age)
 user_cat.display_cat()
 
-
 user_feed = int(input(f"Your cat {user_cat.name} is hungry now."
                       f"Please feed food.\n"
                       f"1,small cat food  2,adult cat food  3,old cat food\n")) - 1
