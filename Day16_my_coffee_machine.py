@@ -6,9 +6,8 @@ from Day16_money_machine import MoneyMachine
 my_coffee_machine = CoffeeMaker()
 my_money_machine = MoneyMachine()
 my_menu = Menu()
+
 is_on = True
-
-
 while is_on:
     options = my_menu.get_items()
     choice = input(f"What would you like?{options}")
