@@ -16,4 +16,10 @@ for _ in range(2):
 
 
 def calculate_score(get_card):
+    if sum(get_card) == 21 and len(get_card) == 2:
+        return 0
+    if 11 in get_card and sum(get_card) > 2:
+        get_card.remove(11)
+        get_card.append(1)
     return sum(get_card)
+
