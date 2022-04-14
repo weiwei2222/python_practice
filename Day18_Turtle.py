@@ -1,3 +1,4 @@
+import turtle as turtle_module
 import turtle as t
 import random
 
@@ -13,3 +14,7 @@ for _ in range(100):
     tim.color(random.choice(colours))
     tim.forward(30)
     tim.setheading(random.choice(directions))
+
+
+screen = turtle_module.Screen()
+screen.exitonclick()
