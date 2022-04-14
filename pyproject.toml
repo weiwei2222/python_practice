@@ -8,6 +8,7 @@ authors = ["Weiwei Lin <stormer.boxes-06@icloud.com>"]
 python = "^3.9"
 pandas = "^1.4"
 replit = "^3.2"
+"colorgram.py" = "^1.2.0"
 
 [tool.poetry.dev-dependencies]
 
