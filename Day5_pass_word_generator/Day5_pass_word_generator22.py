@@ -25,7 +25,7 @@ for get_random in range(1, user_numbers+1):
     password_list += random.choice(numbers)
 
 random.shuffle(password_list)
-# print(password_list)
+print(password_list)
 
 user_password = ""
 for password_char in password_list:
