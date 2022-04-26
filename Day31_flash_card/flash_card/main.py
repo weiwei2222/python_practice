@@ -2,10 +2,16 @@ from tkinter import *
 import pandas
 import random
 BACKGROUND_COLOR = "#B1DDC6"
-
-data = pandas.read_csv("data/french_words.csv")
-to_learn = data.to_dict(orient="records")
 current_card = {}
+to_learn = {}
+
+try:
+    data = pandas.read_csv("data/words_to_learn.csv")
+except FileNotFoundError:
+    original_data = pandas.read_csv("data/french_words.csv")
+    to_learn = original_data.to_dict(orient="records")
+else:
+    to_learn = data.to_dict(orient="records")
 
 
 def next_card():
@@ -23,6 +29,13 @@ def flip_card():
     canvas.itemconfig(card_title, text="English", fill="white")
     canvas.itemconfig(card_word, text=current_card["English"], fill="white")
     canvas.itemconfig(card_background, image=card_back_img)
+
+
+def is_know():
+    to_learn.remove(current_card)
+    data = pandas.DataFrame(to_learn)
+    data.to_csv("data/words_to_learn.csv", index=False)
+    next_card()
 
 
 window = Tk()
@@ -45,7 +58,7 @@ unknown_button = Button(image=cross_image, highlightthickness=0, command=next_ca
 unknown_button.grid(column=0, row=1)
 
 check_image = PhotoImage(file="images/right.png")
-unknown_button = Button(image=check_image, highlightthickness=0, command=next_card)
+unknown_button = Button(image=check_image, highlightthickness=0, command=is_know)
 unknown_button.grid(column=1, row=1)
 
 next_card()
