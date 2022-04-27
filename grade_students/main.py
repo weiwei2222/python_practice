@@ -34,16 +34,16 @@ def evaluate_student(score: int) -> str:
     else:
         return "F"
 # 方法一
-# print(students_grade)
-# students_dict = students_data.to_dict()
-# new_students_data = pandas.DataFrame(students_dict)
-# new_students_data["grade"] = students_grade
+print(students_grade)
+students_dict = students_data.to_dict()
+new_students_data = pandas.DataFrame(students_dict)
+new_students_data["grade"] = students_grade
 # 方法二
-new_students_data = students_data
+# new_students_data = students_data
 # new_students_data["grade"] = students_grade
 
 # 方法三
-new_students_data["grade"] = new_students_data["score"].map(evaluate_student)
+# new_students_data["grade"] = new_students_data["score"].map(evaluate_student)
 
 print(new_students_data)
 new_students_data.to_csv("new_students.csv", index=False)
