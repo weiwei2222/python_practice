@@ -2,10 +2,9 @@ import requests
 import os
 from twilio.rest import Client
 
+from Day35_API_key.api_key import aip_key, account_sid, auth_token
+
 OWN_Endpoint = "https://api.openweathermap.org/data/2.5/onecall?"
-aip_key = "6cd75c2f8e0efdb5cbe7b9d3bcbbbc25"
-account_sid = "ACa6b94891b9b7ce4010064bf5373003dc"
-auth_token = "efad1b49746384c5b9d6b992b144c4af"
 
 weather_params = {
     "lat": 40.060994,
@@ -28,8 +27,7 @@ for hour_date in weather_slice:
 
 if will_rain:
     client = Client(account_sid, auth_token)
-    message = client.messages \
-        .create(
+    message = client.messages.create(
         body="It's going to rain🌧️️ today.Bring an umbrella!☔️",
         from_="+17473023823",
         to="+16147722442"
