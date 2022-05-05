@@ -1,4 +1,6 @@
 import requests
+import os
+from twilio.rest import Client
 
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
@@ -8,11 +10,9 @@ NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
 STOCK_API_KEY = "84NLS95W5UKBO82B"
 NEW_API_KEY = "70885df144054e5ab34894f67a9cfaa0"
+TWILIO_SID = "ACa6b94891b9b7ce4010064bf5373003dc"
+TWILIO_AUTH_TOKEN = "5b96b00fddfd3fc7763efe803a49845f"
 
-    ## STEP 1: Use https://www.alphavantage.co/documentation/#daily
-# When stock price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
-
-#TODO 1. - Get yesterday's closing stock price. Hint: You can perform list comprehensions on Python dictionaries. e.g. [new_value for (key, value) in dictionary.items()]
 stock_params = {
     "function": "TIME_SERIES_DAILY",
     "symbol": STOCK_NAME,
@@ -35,15 +35,20 @@ day_before_yesterday_closing_price = day_before_yesterday_data["4. close"]
 print(day_before_yesterday_closing_price)
 
 
-difference = abs(float(yesterday_closing_price) - float(day_before_yesterday_closing_price))
+difference = float(yesterday_closing_price) - float(day_before_yesterday_closing_price)
+up_down =None
+if difference > 0:
+    up_down = "⬆️"
+else:
+    up_down = "⬇️"
 print(difference)
 
 
-diff_percent = (difference / float(yesterday_closing_price)) * 100
+diff_percent = round((difference / float(yesterday_closing_price)) * 100)
 print(diff_percent)
 
 
-if diff_percent > 0.6:
+if abs(diff_percent) > 4:
     new_params = {
         "apiKey": NEW_API_KEY,
         "qInTitle": COMPANY_NAME
@@ -54,21 +59,14 @@ if diff_percent > 0.6:
     print(three_articles)
 
 
+formatted_articles = [f"{STOCK_NAME}:{up_down}{diff_percent}%\nHeadline: {article['description']}. \nBrief: {article['description']}" for article in three_articles]
 
-#TODO 8. - Create a new list of the first 3 article's headline and description using list comprehension.
+client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
-#TODO 9. - Send each article as a separate message via Twilio. 
-
-
-
-#Optional TODO: Format the message like this: 
-"""
-TSLA: 🔺2%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-or
-"TSLA: 🔻5%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-"""
+for article in formatted_articles:
+    message = client.messages.create(
+        body=article,
+        from_="+17473023823",
+        to="+16147722442"
+    )
 
